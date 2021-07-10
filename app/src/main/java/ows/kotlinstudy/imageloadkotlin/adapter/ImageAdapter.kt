@@ -46,7 +46,10 @@ class ImageAdapter(private val callback: (Images) -> Unit): ListAdapter<Images, 
                 .load(images.thumbnail)
                 .into(binding.imageView)
 
-
+            /**
+             * Bitmap Cache 처리까지 하였으나, URL로 link하는 방법을 몰라서 임시방편으로 Glide 외부라이브러리를 사용했습니다.
+             * Cache에 존재하면 Cache의 Bitmap으로 Image loading, 존재하지 않으면 Images의 link를 통해 bitmap 생성
+             */
 //            var bitmap: Bitmap? = memoryCache.get(images.thumbnail)?.also {
 //                binding.imageView.setImageBitmap(it)
 //            }
