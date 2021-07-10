@@ -1,6 +1,8 @@
 package ows.kotlinstudy.imageloadkotlin
 
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -36,8 +38,9 @@ class MainActivity : AppCompatActivity() {
 
     fun initRecylcerView(activityMainBinding: ActivityMainBinding){
         imageAdapter = ImageAdapter {
-            val intent = Intent(this, WebLoadActivity::class.java)
-            intent.putExtra("link",it.link)
+            val url = Uri.parse(it.link)
+            var intent = Intent(ACTION_VIEW, url)
+            //val intent = Intent(this, WebLoadActivity::class.java)
             startActivity(intent)
         }
 
